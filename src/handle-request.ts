@@ -81,6 +81,12 @@ export default async function handleRequest(request: NextRequest & { nextUrl?: U
       rawBodyText = await request.text();
       const parsedJson = JSON.parse(rawBodyText);
 
+      // 移除 "candidate_count" 字段
+      if ("candidate_count" in parsedJson) {
+        delete parsedJson.candidate_count;
+      }
+      
+      // 如果需要修改 safety_settings
       if (Array.isArray(parsedJson?.safety_settings)) {
         for (const setting of parsedJson.safety_settings) {
           if (
