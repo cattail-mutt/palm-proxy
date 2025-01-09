@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es2021",
     "lib": [
-      "dom", 
+      "dom",
+      "dom.iterable",
       "es2021"
     ],
     "jsx": "preserve",
